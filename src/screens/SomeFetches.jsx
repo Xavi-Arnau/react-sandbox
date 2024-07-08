@@ -2,16 +2,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import catImg from "../assets/cat.jpg";
 import dogImg from "../assets/dog.jpg";
+import { useCartProductsContext } from "../contexts/CartProductsContext";
 
 const SomeFetches = () => {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
+  const [state, dispatch] = useCartProductsContext();
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get("https://dummyjson.com/products");
-        console.log(response.data.products);
+        //console.log(response.data.products);
         setProducts(response.data.products);
       } catch (error) {
         console.error(error);
@@ -26,7 +28,7 @@ const SomeFetches = () => {
           const response = await axios.get(
             `https://dummyjson.com/products/search?q=${search}`
           );
-          console.log(response.data.products);
+          //console.log(response.data.products);
           setProducts(response.data.products);
         }
       } catch (error) {
@@ -43,7 +45,7 @@ const SomeFetches = () => {
       images: [catImg],
     });
     setProducts([response.data, ...products]);
-    console.log(response);
+    //console.log(response);
   };
   const handleUpdate = async () => {
     const response = await axios.put("https://dummyjson.com/products/1", {
@@ -52,10 +54,16 @@ const SomeFetches = () => {
       images: [dogImg],
     });
     setProducts([response.data, ...products]);
-    console.log(response);
+    //console.log(response);
   };
+
+  const handleAddToCart = (item) => {
+    console.log(item);
+    dispatch({ type: "ADD_PRODUCT", data: [...state.cart, item] });
+  };
+
   return (
-    <div>
+    <div className="mt-20">
       <h2 className="text-3xl font-bold">Products</h2>
       <div className="p-4">
         <input
@@ -97,6 +105,14 @@ const SomeFetches = () => {
               />
             </div>
             <div>{product.title}</div>
+            <div>
+              <button
+                className="py-2 px-4 bg-green-700 text-white rounded-lg active:scale-110"
+                onClick={() => handleAddToCart(product)}
+              >
+                Add to cart
+              </button>
+            </div>
           </div>
         ))}
       </div>
