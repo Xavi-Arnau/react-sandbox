@@ -1,3 +1,5 @@
+//based on this project https://dev.to/miracool/how-to-manage-user-authentication-with-react-js-3ic5
+
 import { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -39,8 +41,22 @@ const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
+  const getCurrentAuthUser = async () => {
+    const response = await fetch("https://dummyjson.com/auth/me", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const res = await response.json();
+    //console.log(res);
+    setUser(res.username);
+  };
+
   return (
-    <AuthContext.Provider value={{ token, user, loginAction, logOut }}>
+    <AuthContext.Provider
+      value={{ token, user, loginAction, logOut, getCurrentAuthUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
