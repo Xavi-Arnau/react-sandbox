@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
   const clock = useSelector((state) => state.clock.value);

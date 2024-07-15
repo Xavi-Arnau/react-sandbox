@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { setTime } from "../slices/clockSlice";
 
 const Header = () => {
-  const [state, dispatch] = useCartProductsContext();
+  const [state] = useCartProductsContext();
   const [count, setCount] = useState(0);
   const user = useAuth();
   if (!user.user && user.token) {
