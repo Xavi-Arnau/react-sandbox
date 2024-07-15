@@ -4,14 +4,36 @@ import { FaUserXmark } from "react-icons/fa6";
 import { useCartProductsContext } from "../contexts/CartProductsContext";
 import Scroll from "./Scroll";
 import { useAuth } from "../contexts/AuthContext";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setTime } from "../slices/clockSlice";
 
 const Header = () => {
   const [state, dispatch] = useCartProductsContext();
+  const [count, setCount] = useState(0);
   const user = useAuth();
   if (!user.user && user.token) {
     //get the data using the token
     user.getCurrentAuthUser();
   }
+  const reduxDispatch = useDispatch();
+  useEffect(() => {
+    // Use setTimeout to update the message after 5000 milliseconds (5 seconds)
+    const timeoutId = setTimeout(() => {
+      let current = new Date();
+
+      reduxDispatch(
+        setTime(
+          `${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`
+        )
+      );
+      setCount(count + 1);
+    }, 5000);
+
+    // Cleanup function to clear the timeout if the component unmounts
+    return () => clearTimeout(timeoutId);
+  }, [count, reduxDispatch]); // we wanna keep this running
+
   return (
     <div className="bg-black text-white fixed w-full left-0 top-0">
       <div className="flex flex-row w-10/12 mx-auto gap-4 items-center justify-between p-4">
