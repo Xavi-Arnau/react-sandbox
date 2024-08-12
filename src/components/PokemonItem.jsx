@@ -1,8 +1,9 @@
 import React from "react";
 import { useGetPokemonByNameQuery } from "../services/pokemon";
 
-const Pokemons = () => {
-  const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
+const PokemonItem = ({ pokemonName }) => {
+  const { data, error, isLoading } = useGetPokemonByNameQuery(pokemonName);
+
   return (
     <div className="App">
       {error ? (
@@ -19,4 +20,4 @@ const Pokemons = () => {
   );
 };
 
-export default Pokemons;
+export default PokemonItem;

@@ -9,9 +9,12 @@ export const pokemonApi = createApi({
     getPokemonByName: builder.query({
       query: (name) => `pokemon/${name}`,
     }),
+    getSomePokemons: builder.query({
+      query: (page) => `pokemon/?offset=${page * 20}`,
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery } = pokemonApi;
+export const { useGetPokemonByNameQuery, useGetSomePokemonsQuery } = pokemonApi;
