@@ -1,5 +1,5 @@
 import React from "react";
-import PokemonItem from "../components/PokemonItem";
+
 import PokemonsList from "../components/PokemonsList";
 
 const RTKQuery = () => {

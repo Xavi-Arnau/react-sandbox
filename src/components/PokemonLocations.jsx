@@ -2,7 +2,7 @@ import React from "react";
 import { useGetLocationByNameQuery } from "../services/pokemon";
 
 const PokemonLocations = ({ pokemonName }) => {
-  const { data, error, isLoading } = useGetLocationByNameQuery(pokemonName);
+  const { data } = useGetLocationByNameQuery(pokemonName);
   //console.log(data);
 
   return (
