@@ -5,8 +5,8 @@ import PokemonsList from "../components/PokemonsList";
 const RTKQuery = () => {
   return (
     <div className="mt-20">
-      <h1>RTKQuery</h1>
-      <PokemonItem pokemonName={"bulbasaur"} />
+      <h1 className="text-red-800 text-4xl font-bold mb-4">Some pokemons</h1>
+
       <PokemonsList />
     </div>
   );
