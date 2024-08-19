@@ -45,6 +45,9 @@ const Header = () => {
           <li>
             <Link to="/rtkquery">RTK Query</Link>
           </li>
+          <li>
+            <Link to="/languages">Languages</Link>
+          </li>
         </ul>
         <div className="flex flex-row gap-4 items-center">
           <div className="relative">

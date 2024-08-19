@@ -12,6 +12,8 @@ import { Provider } from "react-redux";
 import Footer from "./components/Footer";
 import RTKQuery from "./screens/RTKQuery";
 
+import MultiLanguage from "./screens/MultiLanguage";
+
 function App() {
   return (
     <BrowserRouter>
@@ -31,6 +33,7 @@ function App() {
                     </Provider>
                   }
                 />
+                <Route path="/languages" element={<MultiLanguage />} />
 
                 <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute />}>
