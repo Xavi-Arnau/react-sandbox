@@ -32,6 +32,7 @@ const MultiLanguage = () => {
             <li>{t("label")}</li>
             <li>{t("about")}</li>
             <li>{t("home")}</li>
+            <li>{t("hello", { name: "Bruce Wayne 🦇" })}</li>
           </ul>
         </div>
       </div>
