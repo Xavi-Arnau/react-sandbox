@@ -7,6 +7,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setTime } from "../slices/clockSlice";
+import { LANGUAGES } from "../lang/languages";
+import i18n from "../lang/i18n";
 
 const Header = () => {
   const [state] = useCartProductsContext();
@@ -34,10 +36,16 @@ const Header = () => {
     return () => clearTimeout(timeoutId);
   }, [count, reduxDispatch]); // we wanna keep this running
 
+  const onChangeLang = (e) => {
+    const lang_code = e.target.value;
+    i18n.changeLanguage(lang_code);
+  };
+
   return (
     <div className="bg-black text-white fixed w-full left-0 top-0">
       <div className="flex flex-row w-10/12 mx-auto gap-4 items-center justify-between p-4">
         <div className="text-2xl">SandBox</div>
+
         <ul className="flex flex-row gap-4">
           <li>
             <Link to="/">Some Fetches</Link>
@@ -71,6 +79,15 @@ const Header = () => {
           ) : (
             <Link to="/login">Login</Link>
           )}
+          <div className="text-black">
+            <select defaultValue={i18n.language} onChange={onChangeLang}>
+              {LANGUAGES.map(({ code, label }) => (
+                <option key={code} value={code}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       <Scroll />
