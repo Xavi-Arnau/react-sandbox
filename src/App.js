@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import RTKQuery from "./screens/RTKQuery";
 
 import MultiLanguage from "./screens/MultiLanguage";
+import ExpressApi from "./screens/ExpressApi";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                   }
                 />
                 <Route path="/languages" element={<MultiLanguage />} />
+                <Route path="/expressapi" element={<ExpressApi />} />
 
                 <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute />}>
