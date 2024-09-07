@@ -45,7 +45,7 @@ const Persons = () => {
       />
       <div>
         {showSuggestions ? (
-          <ul className=" bg-slate-200">
+          <ul className=" bg-slate-200 shadow-xl z-20">
             {suggestions.map((item) => (
               <li
                 onClick={() => handleClick(item)}
