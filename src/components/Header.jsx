@@ -59,6 +59,9 @@ const Header = () => {
           <li>
             <Link to="/expressapi">Express API</Link>
           </li>
+          <li>
+            <Link to="/animations">Animations</Link>
+          </li>
         </ul>
         <div className="flex flex-row gap-4 items-center">
           <div className="relative">
