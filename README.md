@@ -19,3 +19,5 @@ Stuff I tried so far:
 -i18n to test multi language stuff
 
 -Using an express.js API made by myself
+
+-Played around with animations

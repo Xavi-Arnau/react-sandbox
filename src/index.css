@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.item-opacity-enter {
+  opacity: 0;
+}
+.item-opacity-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-opacity-exit {
+  opacity: 1;
+}
+.item-opacity-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+.item-side-enter {
+  translate: 100vw 0;
+  scale: 110% 1;
+}
+.item-side-enter-active {
+  translate: 0 0;
+  scale: 100% 1;
+  transition: all 500ms ease-in;
+}
+.item-side-exit {
+  translate: 0 0;
+  scale: 100% 1;
+}
+.item-side-exit-active {
+  translate: 100vw 0;
+  scale: 110% 1;
+  transition: all 500ms ease-in;
+}
