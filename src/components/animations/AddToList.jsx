@@ -32,6 +32,7 @@ const AddToList = () => {
         <select className="w-96 bg-slate-200 p-4" onChange={handleChange}>
           <option value="item-opacity">Opacity</option>
           <option value="item-side">Slide in</option>
+          <option value="item-top">Slide from top</option>
         </select>
       </div>
       <div className="w-1/2">
