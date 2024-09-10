@@ -1,29 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 const Persons = () => {
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const inputRef = useRef(null);
 
-  async function fetchData() {
-    try {
-      if (search.length > 2) {
-        const response = await axios.get(
-          `https://express-actors.netlify.app/.netlify/functions/api/actor?search=${search}`
-        );
-        console.log(response.data);
-        setSuggestions(response.data);
-        setShowSuggestions(true);
+  useEffect(() => {
+    console.log(search);
+
+    async function fetchData() {
+      try {
+        if (search.length > 2 && inputRef.current === document.activeElement) {
+          const response = await axios.get(
+            `https://express-actors.netlify.app/.netlify/functions/api/actor?search=${search}`
+          );
+          console.log(response.data);
+          setSuggestions(response.data);
+          setShowSuggestions(true);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
-  }
+    fetchData();
+  }, [search]);
 
   const handleChange = (event) => {
     setSearch(event.target.value);
-    fetchData();
   };
 
   const handleClick = (item) => {
@@ -35,6 +40,7 @@ const Persons = () => {
   return (
     <div className="w-8/12 mx-auto mt-8 p-10">
       <input
+        ref={inputRef}
         className="w-full bg-slate-100 p-4"
         onChange={handleChange}
         type="text"
