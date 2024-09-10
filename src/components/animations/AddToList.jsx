@@ -33,6 +33,7 @@ const AddToList = () => {
           <option value="item-opacity">Opacity</option>
           <option value="item-side">Slide in</option>
           <option value="item-top">Slide from top</option>
+          <option value="item-appear">Appear</option>
         </select>
       </div>
       <div className="w-1/2">

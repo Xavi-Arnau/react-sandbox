@@ -58,3 +58,22 @@
   transition: all 500ms ease-in;
   opacity: 0;
 }
+
+.item-appear-enter {
+  width: 0%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.item-appear-enter-active {
+  width: 100%;
+  transition: width 500ms ease-out;
+}
+.item-appear-exit {
+  width: 100%;
+}
+.item-appear-exit-active {
+  width: 0%;
+  transition: width 500ms ease-in;
+  margin-left: auto;
+  margin-right: auto;
+}
