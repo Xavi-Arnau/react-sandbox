@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import PersonsSuggestions from "./PersonsSuggestions";
+import Loader from "react-spinners/CircleLoader";
 
 const Persons = () => {
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -12,6 +15,7 @@ const Persons = () => {
 
     async function fetchData() {
       try {
+        setIsLoading(true);
         if (search.length > 2 && inputRef.current === document.activeElement) {
           const response = await axios.get(
             `https://express-actors.netlify.app/.netlify/functions/api/actor?search=${search}`
@@ -20,8 +24,10 @@ const Persons = () => {
           setSuggestions(response.data);
           setShowSuggestions(true);
         }
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
+        setIsLoading(false);
       }
     }
     fetchData();
@@ -49,21 +55,25 @@ const Persons = () => {
         placeholder="Type your search here..."
         value={search}
       />
-      <div>
-        {showSuggestions ? (
-          <ul className=" bg-slate-200 shadow-xl z-20">
-            {suggestions.map((item) => (
-              <li
-                onClick={() => handleClick(item)}
-                className="hover:bg-slate-800 hover:text-white p-2 px-4 cursor-pointer"
-                key={item.id}
-              >
-                {item.name}
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center p-4">
+          <Loader
+            loading={true}
+            size={50}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        <div>
+          {showSuggestions ? (
+            <PersonsSuggestions
+              suggestions={suggestions}
+              handleClick={handleClick}
+            />
+          ) : null}
+        </div>
+      )}
     </div>
   );
 };
