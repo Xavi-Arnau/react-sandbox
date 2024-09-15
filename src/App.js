@@ -15,6 +15,7 @@ import RTKQuery from "./screens/RTKQuery";
 import MultiLanguage from "./screens/MultiLanguage";
 import ExpressApi from "./screens/ExpressApi";
 import Animations from "./screens/Animations";
+import ExpressApiMongo from "./screens/ExpressApiMongo";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                 />
                 <Route path="/languages" element={<MultiLanguage />} />
                 <Route path="/expressapi" element={<ExpressApi />} />
+                <Route path="/expressapimongo" element={<ExpressApiMongo />} />
                 <Route path="/animations" element={<Animations />} />
 
                 <Route path="/login" element={<Login />} />
