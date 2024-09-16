@@ -89,21 +89,22 @@ const Movies = () => {
           ) : null}
         </div>
       )}
-      <div className="bg-blue-100 mt-10 rounded-lg">
-        <TransitionGroup component="ul" className="flex flex-col gap-4 p-8">
-          {cast && cast.length > 0
-            ? cast.map((actor) => (
-                <CSSTransition
-                  key={actor._id}
-                  timeout={500}
-                  classNames={"item-opacity"}
-                >
-                  <li key={actor._id}>{actor.name}</li>
-                </CSSTransition>
-              ))
-            : null}
-        </TransitionGroup>
-      </div>
+
+      {cast && cast.length > 0 ? (
+        <div className="bg-blue-100 mt-10 rounded-lg">
+          <TransitionGroup component="ul" className="flex flex-col gap-4 p-8">
+            {cast.map((actor) => (
+              <CSSTransition
+                key={actor._id}
+                timeout={500}
+                classNames={"item-opacity"}
+              >
+                <li key={actor._id}>{actor.name}</li>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        </div>
+      ) : null}
     </div>
   );
 };
