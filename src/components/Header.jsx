@@ -65,6 +65,9 @@ const Header = () => {
           <li>
             <Link to="/animations">Animations</Link>
           </li>
+          <li>
+            <Link to="/pagination">Pagination</Link>
+          </li>
         </ul>
         <div className="flex flex-row gap-4 items-center">
           <div className="relative">

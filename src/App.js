@@ -16,6 +16,7 @@ import MultiLanguage from "./screens/MultiLanguage";
 import ExpressApi from "./screens/ExpressApi";
 import Animations from "./screens/Animations";
 import ExpressApiMongo from "./screens/ExpressApiMongo";
+import Pagination from "./screens/Pagination";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/expressapi" element={<ExpressApi />} />
                 <Route path="/expressapimongo" element={<ExpressApiMongo />} />
                 <Route path="/animations" element={<Animations />} />
+                <Route path="/pagination" element={<Pagination />} />
 
                 <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute />}>

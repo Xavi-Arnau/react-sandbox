@@ -39,8 +39,12 @@ const Persons = () => {
 
   const handleClick = (item) => {
     setSearch(item.name);
-    setSuggestions([]);
+
     setShowSuggestions(false);
+  };
+
+  const handleSearchClick = () => {
+    setShowSuggestions(true);
   };
 
   return (
@@ -49,6 +53,7 @@ const Persons = () => {
         ref={inputRef}
         className="w-full bg-slate-100 p-4"
         onChange={handleChange}
+        onClick={handleSearchClick}
         type="text"
         name=""
         id=""
