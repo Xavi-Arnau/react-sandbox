@@ -30,7 +30,7 @@ const Header = () => {
         )
       );
       setCount(count + 1);
-    }, 5000);
+    }, 500000);
 
     // Cleanup function to clear the timeout if the component unmounts
     return () => clearTimeout(timeoutId);
