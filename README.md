@@ -20,4 +20,8 @@ Stuff I tried so far:
 
 -Using an express.js API made by myself
 
--Played around with animations
+-Played around with animations - react-animate-height - react transition group
+
+-react-paginate
+
+-memo, useMemo and useCallback examples
