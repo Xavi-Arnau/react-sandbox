@@ -71,6 +71,9 @@ const Header = () => {
           <li>
             <Link to="/memo">Memo</Link>
           </li>
+          <li>
+            <Link to="/customhooks">Custom Hooks</Link>
+          </li>
         </ul>
         <div className="flex flex-row gap-4 items-center">
           <div className="relative">

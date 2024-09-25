@@ -18,6 +18,7 @@ import Animations from "./screens/Animations";
 import ExpressApiMongo from "./screens/ExpressApiMongo";
 import Pagination from "./screens/Pagination";
 import Memo from "./screens/Memo";
+import CustomHooks from "./screens/CustomHooks";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/animations" element={<Animations />} />
                 <Route path="/pagination" element={<Pagination />} />
                 <Route path="/memo" element={<Memo />} />
+                <Route path="/customhooks" element={<CustomHooks />} />
 
                 <Route path="/login" element={<Login />} />
                 <Route element={<PrivateRoute />}>
